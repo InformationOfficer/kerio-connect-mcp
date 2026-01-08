@@ -1,0 +1,61 @@
+{
+  "name": "@aimbitgmbh/kerio-connect-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Kerio Connect - Mail, Calendar, Contacts, Tasks, and Notes management",
+  "author": "aimbit GmbH <info@aimbit.de>",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aimbitgmbh/kerio-connect-mcp.git"
+  },
+  "homepage": "https://github.com/aimbitgmbh/kerio-connect-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/aimbitgmbh/kerio-connect-mcp/issues"
+  },
+  "bin": {
+    "kerio-connect-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsx --import dotenv/config src/index.ts",
+    "build": "tsc && chmod +x dist/index.js",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "llm",
+    "ai-assistant",
+    "ai-integration",
+    "kerio",
+    "kerio-connect",
+    "email",
+    "mail",
+    "calendar",
+    "contacts",
+    "tasks",
+    "notes",
+    "groupware",
+    "collaboration"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "dotenv": "^17.2.3",
+    "undici": "^6.20.1",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
