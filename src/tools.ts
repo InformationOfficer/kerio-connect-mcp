@@ -1930,8 +1930,7 @@ export async function mailsShowRecent(client: KerioClient, args: unknown): Promi
     {
       limit: fetchLimit,
       orderBy: [{ columnName: 'receiveDate', direction: 'Desc', caseSensitive: true }],
-    },
-    true // ← Include full content!
+    }
   );
 
   // Apply filters

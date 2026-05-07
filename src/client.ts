@@ -573,8 +573,7 @@ export class KerioClient {
    */
   public async getMails(
     folderIds: string[],
-    query: Query = {},
-    includeContent: boolean = false
+    query: Query = {}
   ): Promise<KerioMail[]> {
     const fields = [
       'id', 'from', 'to', 'cc', 'bcc', 'subject', 'receiveDate',
@@ -582,11 +581,6 @@ export class KerioClient {
       'isForwarded', 'isFlagged', 'isReadOnly', 'isDraft',
       'hasAttachment', 'priority', 'size', 'folderId'
     ];
-
-    // Include email body content if requested (for mails_get)
-    if (includeContent) {
-      fields.push('displayableParts');
-    }
 
     const params: any = {
       query: {
@@ -648,43 +642,16 @@ export class KerioClient {
    * Indices:       [0]             [1]  [2]     [3]          [4]   [5]              [6]
    */
   public async getMailById(mailId: string): Promise<KerioMail> {
-    // Extract folder ID from mail ID
-    // Mail: keriostorage://mail/domain/user/folder_uuid/mail_id
-    // Folder: keriostorage://folder/domain/user/folder_uuid
-    const mailParts = mailId.split('/');
-
-    // Need at least 7 parts: ['keriostorage:', '', 'mail', domain, user, folder_uuid, mail_id]
-    if (mailParts.length < 7) {
-      throw new Error(
-        `Invalid mail ID format: ${mailId}\n` +
-        `Expected: keriostorage://mail/{domain}/{user}/{folder_uuid}/{mail_id}\n` +
-        `Got ${mailParts.length} parts, need at least 7`
-      );
-    }
-
-    // Correct indexing (accounting for empty string at index 1 after 'keriostorage:')
-    const domain = mailParts[3];
-    const user = mailParts[4];
-    const folderUuid = mailParts[5];
-
-    const folderId = `keriostorage://folder/${domain}/${user}/${folderUuid}`;
-
-    console.error(`[Client] Fetching email ${mailId} from folder ${folderId}`);
-
-    // Get all mails from this folder with content, then filter by ID
-    const mails = await this.getMails(
-      [folderId],
-      { limit: 500 }, // Increase limit to find the specific email
-      true // Include content
+    // Mails.getById returns full mail content including displayableParts
+    // Response structure: { errors: any[], result: KerioMail[] }
+    const response = await this.jsonRpcRequest<{ errors: any[]; result: KerioMail[] }>(
+      'Mails.getById',
+      { ids: [mailId] }
     );
 
-    const mail = mails.find((m) => m.id === mailId);
+    const mail = response.result?.[0];
     if (!mail) {
-      throw new Error(
-        `Email not found: ${mailId}\n` +
-        `Searched in folder: ${folderId}\n` +
-        `Found ${mails.length} emails in folder, but none matched the ID.`
-      );
+      throw new Error(`Email not found: ${mailId}`);
     }
 
     return mail;
