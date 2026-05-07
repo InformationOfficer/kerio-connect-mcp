@@ -1,5 +1,5 @@
 {
-  "name": "@InformationOfficer/kerio-connect-mcp",
+  "name": "@informationofficer/kerio-connect-mcp",
   "version": "0.1.1",
   "description": "MCP server for Kerio Connect - Mail, Calendar, Contacts, Tasks, and Notes management",
   "author": "Information Officer <support@informationofficer.com>",
