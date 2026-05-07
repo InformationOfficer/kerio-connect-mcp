@@ -1,17 +1,17 @@
 {
-  "name": "@aimbitgmbh/kerio-connect-mcp",
-  "version": "0.1.0",
+  "name": "@InformationOfficer/kerio-connect-mcp",
+  "version": "0.1.1",
   "description": "MCP server for Kerio Connect - Mail, Calendar, Contacts, Tasks, and Notes management",
-  "author": "aimbit GmbH <info@aimbit.de>",
+  "author": "Information Officer <support@informationofficer.com>",
   "license": "MIT",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aimbitgmbh/kerio-connect-mcp.git"
+    "url": "https://github.com/InformationOfficer/kerio-connect-mcp.git"
   },
-  "homepage": "https://github.com/aimbitgmbh/kerio-connect-mcp#readme",
+  "homepage": "https://github.com/InformationOfficer/kerio-connect-mcp#readme",
   "bugs": {
-    "url": "https://github.com/aimbitgmbh/kerio-connect-mcp/issues"
+    "url": "https://github.com/InformationOfficer/kerio-connect-mcp/issues"
   },
   "bin": {
     "kerio-connect-mcp": "./dist/index.js"

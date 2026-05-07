@@ -34,7 +34,7 @@ Add to your MCP client configuration:
   "mcpServers": {
     "kerio-connect": {
       "command": "npx",
-      "args": ["-y", "github:InformationOfficer/kerio-connect-mcp"],
+      "args": ["-y", "@InformationOfficer/kerio-connect-mcp"],
       "env": {
         "KERIO_SERVER": "https://mail.example.com",
         "KERIO_USERNAME": "your-email@example.com",
