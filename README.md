@@ -1,11 +1,12 @@
 # Kerio Connect MCP Server
 
-[![NPM Version](https://img.shields.io/npm/v/@aimbitgmbh/kerio-connect-mcp)](https://www.npmjs.com/package/@aimbitgmbh/kerio-connect-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Model Context Protocol (MCP) server providing programmatic access to Kerio Connect for Mail, Calendar, Contacts, Tasks, and Notes management.
 
-**Tested and optimized for gpt-oss:20b**
+Original version: [@aimbitgmbh/kerio-connect-mcp](https://github.com/aimbitgmbh/kerio-connect-mcp)
+
+This version includes a fix which now includes the full message body when calling `mailsGet`.
 
 ## Prerequisites
 
@@ -24,15 +25,7 @@ A Model Context Protocol (MCP) server providing programmatic access to Kerio Con
 - Full-text search across modules
 - TypeScript implementation with Zod validation
 
-## Installation
-
-### NPM Package
-
-```bash
-npx @aimbitgmbh/kerio-connect-mcp
-```
-
-### MCP Client Configuration
+## MCP Client Configuration
 
 Add to your MCP client configuration:
 
@@ -41,7 +34,7 @@ Add to your MCP client configuration:
   "mcpServers": {
     "kerio-connect": {
       "command": "npx",
-      "args": ["-y", "@aimbitgmbh/kerio-connect-mcp"],
+      "args": ["-y", "github:InformationOfficer/kerio-connect-mcp"],
       "env": {
         "KERIO_SERVER": "https://mail.example.com",
         "KERIO_USERNAME": "your-email@example.com",
@@ -194,13 +187,14 @@ Contributions are welcome! Please feel free to submit a Pull Request or open an 
 ## License
 
 MIT © 2025 [aimbit GmbH](https://aimbit.de)
+MIT © 2026 [Information Officer](https://informationofficer.com)
 
 See [LICENSE](LICENSE) file for details.
 
 ## Links
 
-- [GitHub Repository](https://github.com/aimbitgmbh/kerio-connect-mcp)
-- [Report Issues](https://github.com/aimbitgmbh/kerio-connect-mcp/issues)
-- [npm Package](https://www.npmjs.com/package/@aimbitgmbh/kerio-connect-mcp)
-- [aimbit GmbH](https://aimbit.de)
+- [GitHub Repository](https://github.com/InformationOfficer/kerio-connect-mcp)
+- [Report Issues](https://github.com/InformationOfficer/kerio-connect-mcp/issues)
+- [aimbit GmbH (Original creator)](https://aimbit.de)
+- [Information Officer (This version)](https://informationofficer.com)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
