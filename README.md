@@ -136,6 +136,10 @@ KERIO_ENABLE_SEND=false
 - `folders_list` - List all folders
 - `folders_create` - Create folder
 
+### Session Management
+
+- `session_login` - Re-authenticate with Kerio Connect. Call this if any tool returns an authentication or session-expired error.
+
 ## Architecture
 
 ### Project Structure
@@ -170,7 +174,7 @@ For self-signed certificates, set `KERIO_VERIFY_SSL=false`.
 
 ### Session Expired
 
-The server automatically re-authenticates. If errors persist, verify credentials are valid and the server is accessible.
+Call the `session_login` tool to re-authenticate manually. If errors persist, verify credentials are valid and the server is accessible.
 
 ## Security
 

@@ -1365,4 +1365,13 @@ export class KerioClient {
       await this.login();
     }
   }
+
+  /**
+   * Force re-authentication (clear existing session and login again)
+   */
+  public async reAuthenticate(): Promise<void> {
+    this.sessionToken = null;
+    this.sessionCookie = null;
+    await this.login();
+  }
 }

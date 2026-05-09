@@ -25,6 +25,7 @@ import { config } from './config.js';
 import { KerioClient } from './client.js';
 import {
   getToolDefinitions,
+  sessionLogin,
   notesList,
   notesSearch,
   notesCount,
@@ -101,6 +102,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     let result: string;
 
     switch (request.params.name) {
+      // Session Tools
+      case 'session_login':
+        result = await sessionLogin(client);
+        break;
+
       // Shared/General Tools
       case 'folders_list':
         result = await foldersList(client, request.params.arguments ?? {});

@@ -86,6 +86,15 @@ function truncateText(text: string, maxLength: number = 2000): { text: string; t
 }
 
 // ============================================================================
+// SESSION TOOLS
+// ============================================================================
+
+export async function sessionLogin(client: KerioClient): Promise<string> {
+  await client.reAuthenticate();
+  return 'Re-authenticated successfully.';
+}
+
+// ============================================================================
 // SHARED/GENERAL TOOLS
 // ============================================================================
 
@@ -2899,6 +2908,15 @@ export async function calendarsDelete(client: KerioClient, args: unknown): Promi
  * All available tool definitions (internal - includes mails_send)
  */
 const allToolDefinitions = [
+  // === SESSION TOOLS ===
+  {
+    name: 'session_login',
+    description: 'Re-authenticate with Kerio Connect. Call this if you receive an authentication or session-expired error from any other tool.',
+    inputSchema: {
+      type: 'object' as const,
+      properties: {},
+    },
+  },
   // === SHARED/GENERAL TOOLS ===
   {
     name: 'folders_list',
